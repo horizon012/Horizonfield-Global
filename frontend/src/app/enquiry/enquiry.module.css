@@ -1,0 +1,103 @@
+.page{position:relative;isolation:isolate;overflow:hidden;min-height:calc(100svh - 88px);background:linear-gradient(130deg,#05172b 0%,#0c2f53 47%,#08233d 100%);color:#f8fcff;padding:clamp(44px,5.5vw,88px) 22px 22px;font-family:Arial,system-ui,sans-serif}
+.ambient{pointer-events:none;position:absolute;inset:0;z-index:0;overflow:hidden}
+.orbA,.orbB,.orbC{position:absolute;border-radius:50%;filter:blur(5px);will-change:transform;animation:float 19s ease-in-out infinite alternate}
+.orbA{width:min(58vw,820px);height:min(58vw,820px);background:radial-gradient(circle,rgba(49,154,242,.28),rgba(62,134,255,.07) 55%,transparent 70%);top:-34%;right:-12%}
+.orbB{width:min(48vw,650px);height:min(48vw,650px);background:radial-gradient(circle,rgba(87,221,249,.19),transparent 66%);left:-18%;bottom:-30%;animation-delay:-8s;animation-duration:23s}
+.orbC{width:380px;height:380px;background:radial-gradient(circle,rgba(171,141,255,.15),transparent 72%);right:27%;bottom:-12%;animation-delay:-13s;animation-duration:25s}
+.grid{position:absolute;inset:0;opacity:.13;background-image:linear-gradient(rgba(208,235,255,.25) 1px,transparent 1px),linear-gradient(90deg,rgba(208,235,255,.25) 1px,transparent 1px);background-size:70px 70px;mask-image:linear-gradient(to bottom,transparent,#000 38%,transparent)}
+@keyframes float{from{transform:translate3d(-25px,12px,0) scale(1)}to{transform:translate3d(45px,-48px,0) scale(1.10)}}
+.layout{width:min(1320px,100%);margin:0 auto;display:grid;grid-template-columns:minmax(0,.83fr) minmax(0,1.17fr);gap:clamp(35px,6vw,110px);align-items:center}
+.intro{padding:28px 0 65px;max-width:510px}
+.kicker{display:inline-flex;align-items:center;gap:12px;font-size:12px;font-weight:750;letter-spacing:.22em;color:#a7dcff}.kicker span{height:2px;width:29px;background:#e0b24d}
+.intro h1{font-family:Georgia,'Times New Roman',serif;font-size:clamp(52px,5.1vw,83px);letter-spacing:-.055em;line-height:1.055;margin:29px 0 26px;color:#fff}
+.intro h1 em{font-style:normal;color:#8fd2ff}
+.lead{font-size:clamp(15px,1.2vw,17px);color:#caddec;line-height:1.78;max-width:480px}
+.focuses{margin:42px 0 34px;display:grid;gap:15px}
+.focuses div{display:flex;align-items:center;gap:17px;color:#eaf6ff;font-size:14px}
+.focuses b{display:grid;place-items:center;width:34px;height:34px;border-radius:11px;background:rgba(255,255,255,.09);border:1px solid rgba(183,224,255,.25);color:#95d3fb;font-size:11px}
+.contact{font-size:13px;color:#b1cada;line-height:1.7}.contact a{color:#a4ddff;text-decoration:underline;text-underline-offset:4px;overflow-wrap:anywhere}
+.formWrap{min-width:0;padding:clamp(24px,3vw,41px);border:1px solid rgba(224,244,255,.31);border-radius:30px;background:linear-gradient(135deg,rgba(247,252,255,.18),rgba(164,202,243,.085) 58%,rgba(255,255,255,.13));backdrop-filter:blur(23px) saturate(145%);-webkit-backdrop-filter:blur(23px) saturate(145%);box-shadow:0 32px 110px rgba(0,8,22,.27),inset 0 1px 0 rgba(255,255,255,.19)}
+.formHeading{margin-bottom:24px}.formKicker{font-size:10px;letter-spacing:.22em;color:#b7e1ff;font-weight:700}.formHeading h2{margin:9px 0;font-family:Georgia,'Times New Roman',serif;color:#fff;font-weight:600;font-size:clamp(27px,2.55vw,38px);letter-spacing:-.02em}.formHeading p{font-size:13px;color:#c8dbe8;line-height:1.6}
+.footerNote{width:min(1320px,100%);margin:34px auto 0;text-align:center;color:#a3bfce;font-size:11px;letter-spacing:.02em}
+@media(max-width:1020px){.layout{grid-template-columns:1fr;gap:16px;max-width:760px}.intro{max-width:690px;padding:0}.intro h1{margin:18px 0;font-size:clamp(43px,7vw,65px)}.focuses{margin:24px 0;display:flex;gap:15px;flex-wrap:wrap}.focuses div{font-size:12px}.contact{margin-bottom:12px}}
+@media(max-width:580px){.page{padding:30px 12px 24px}.layout{gap:12px}.intro{padding:0 10px}.intro h1{font-size:clamp(43px,12vw,57px)}.kicker{font-size:10px}.lead{font-size:14px}.focuses{display:none}.contact{margin:18px 0 12px}.formWrap{padding:22px 15px;border-radius:22px;backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px)}.formHeading{margin-bottom:19px}.orbA{width:500px;height:500px;right:-280px;top:2%}.orbB{width:390px;height:390px;left:-220px;bottom:3%}}
+@media(prefers-reduced-motion:reduce){.orbA,.orbB,.orbC{animation:none}}
+
+
+/* PATCH: Place the moving background in front of the page paint but behind content. */
+.layout,.footerNote { position:relative; z-index:1; }
+.page { background: linear-gradient(124deg,#06192f 0%,#0b3158 52%,#071a31 100%); }
+
+/* Stronger yet lightweight blue-frost ambient movement. */
+.orbA,.orbB,.orbC { filter:none; opacity:1; will-change:transform; }
+.orbA {
+  width:min(70vw,920px);height:min(70vw,920px);
+  top:-32%;right:-22%;
+  background:radial-gradient(circle,rgba(42,151,248,.34) 0%,rgba(43,133,236,.16) 36%,transparent 69%);
+  animation:auroraA 13s ease-in-out infinite alternate;
+}
+.orbB {
+  width:min(64vw,850px);height:min(64vw,850px);
+  left:-25%;bottom:-37%;
+  background:radial-gradient(circle,rgba(51,212,255,.29),rgba(31,126,200,.12) 43%,transparent 70%);
+  animation:auroraB 16s ease-in-out infinite alternate;
+}
+.orbC {
+  width:min(50vw,680px);height:min(50vw,680px);
+  right:15%;bottom:-34%;
+  background:radial-gradient(circle,rgba(120,135,255,.26),rgba(80,102,202,.09) 50%,transparent 72%);
+  animation:auroraC 14s ease-in-out infinite alternate;
+}
+.grid {
+  opacity:.28;
+  background-size:86px 86px;
+  mask-image:linear-gradient(to bottom,transparent,#000 24%,#000 78%,transparent);
+  animation:gridDrift 28s linear infinite;
+}
+.orbitA,.orbitB {
+  position:absolute;
+  border:1px solid rgba(147,219,255,.20);
+  box-shadow:0 0 32px rgba(83,194,255,.08),inset 0 0 36px rgba(69,161,248,.04);
+  border-radius:50%;
+  pointer-events:none;
+}
+.orbitA {
+  width:540px;height:540px;left:-160px;top:14%;
+  transform:rotate(-24deg) scaleX(1.55);
+  animation:orbitFloat 18s ease-in-out infinite alternate;
+}
+.orbitB {
+  width:720px;height:720px;right:-280px;bottom:-230px;
+  border-style:dashed;
+  border-color:rgba(158,232,255,.16);
+  animation:orbitFloatReverse 23s ease-in-out infinite alternate;
+}
+.lightTrailA,.lightTrailB {
+  position:absolute; display:block; pointer-events:none;
+  width:min(58vw,760px);height:2px;
+  background:linear-gradient(90deg,transparent,rgba(133,225,255,.09),rgba(183,245,255,.65),transparent);
+  box-shadow:0 0 18px rgba(105,200,255,.44);
+  transform:rotate(-24deg);
+}
+.lightTrailA {top:22%;left:-42%;animation:trailAcross 12s linear infinite;}
+.lightTrailB {bottom:19%;left:-52%;opacity:.7;animation:trailAcross 18s linear infinite -5s;}
+@keyframes auroraA {0%{transform:translate3d(-50px,-35px,0) scale(.92)}100%{transform:translate3d(90px,95px,0) scale(1.22)}}
+@keyframes auroraB {0%{transform:translate3d(-60px,35px,0) scale(.9)}100%{transform:translate3d(120px,-100px,0) scale(1.15)}}
+@keyframes auroraC {0%{transform:translate3d(-70px,55px,0) scale(1)}100%{transform:translate3d(85px,-85px,0) scale(1.25)}}
+@keyframes gridDrift {0%{transform:translate3d(0,0,0)}100%{transform:translate3d(86px,86px,0)}}
+@keyframes orbitFloat {from{transform:rotate(-24deg) scaleX(1.55) translate3d(-14px,10px,0)}to{transform:rotate(-18deg) scaleX(1.55) translate3d(28px,-30px,0)}}
+@keyframes orbitFloatReverse {from{transform:translate3d(20px,-35px,0) rotate(0deg)}to{transform:translate3d(-40px,40px,0) rotate(25deg)}}
+@keyframes trailAcross {from{transform:translate3d(-20vw,35px,0) rotate(-24deg)}to{transform:translate3d(155vw,-120px,0) rotate(-24deg)}}
+
+/* Keep background legible and graphics less busy on smaller devices. */
+@media(max-width:760px){
+  .orbitA {width:350px;height:350px;left:-180px;top:10%;}
+  .orbitB {width:430px;height:430px;right:-270px;bottom:-120px;}
+  .grid {opacity:.18;}
+  .lightTrailA,.lightTrailB {opacity:.34;}
+  .orbA {width:580px;height:580px;right:-310px;top:-90px;}
+  .orbB {width:480px;height:480px;left:-310px;bottom:-50px;}
+}
+@media(prefers-reduced-motion:reduce){
+  .orbA,.orbB,.orbC,.grid,.orbitA,.orbitB,.lightTrailA,.lightTrailB{animation:none!important;will-change:auto;}
+}

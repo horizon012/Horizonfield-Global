@@ -1,0 +1,24 @@
+# Node / Next
+node_modules/
+.next/
+out/
+dist/
+*.log
+# Python / Django
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+*.sqlite3
+media/
+staticfiles/
+# Secrets
+.env
+.env.local
+.env.*.local
+!.env.example
+# OS / IDE
+.DS_Store
+.vscode/
+.idea/
